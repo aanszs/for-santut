@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Santut ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+.gallery img.active{
+opacity:1;
+transform:scale(1.05);
+transition:opacity 1.5s ease, transform 4s ease;
+}
+
+.cakeLayer{
+position:absolute;
+bottom:-15px;
+left:50%;
+transform:translateX(-50%);
+
+width:260px;
+height:30px;
+
+background:linear-gradient(
+to bottom,
+#ff4da6,
+#c40066
+);
+
+border-radius:20px;
+
+box-shadow:
+0 10px 20px rgba(0,0,0,0.4),
+inset 0 -5px 10px rgba(0,0,0,0.2);
+}
+
+.cake:after{
+content:"";
+position:absolute;
+bottom:-35px;
+left:50%;
+transform:translateX(-50%);
+
+width:180px;
+height:25px;
+
+background:radial-gradient(
+ellipse at center,
+rgba(0,0,0,0.4) 0%,
+rgba(0,0,0,0) 70%
+);
+}
+
+#main h1{
+margin-top:20px;
+margin-bottom:10px;
+}
+
+#photoArea .btn{
+margin-top:10px;
+}
+
+#main{
+max-width:800px;
+margin:auto;
+padding:20px;
+}
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(-45deg,#020024,#090979,#000000,#1a0033);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* loader */
+
+#loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:9999;
+transition:opacity 1.5s;
+}
+
+.loaderHeart{
+font-size:70px;
+animation:heartBeat 1.2s infinite;
+}
+
+@keyframes heartBeat{
+0%{transform:scale(1)}
+25%{transform:scale(1.3)}
+40%{transform:scale(1)}
+60%{transform:scale(1.2)}
+100%{transform:scale(1)}
+}
+
+.loaderText{
+font-size:32px;
+margin-top:20px;
+}
+
+.loaderSub{
+font-size:18px;
+opacity:.6;
+}
+
+/* tombol */
+
+.btn{
+padding:15px 40px;
+font-size:20px;
+border:none;
+border-radius:40px;
+background:#ff4da6;
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px #ff4da6;
+}
+
+/* kado */
+
+.gift{
+font-size:140px;
+cursor:pointer;
+animation:bounce 2s infinite;
+}
+@keyframes openGiftAnim{
+0%{
+transform:scale(1) rotate(0deg);
+}
+
+40%{
+transform:scale(1.4) rotate(-10deg);
+}
+
+70%{
+transform:scale(1.6) rotate(10deg);
+}
+
+100%{
+transform:scale(0);
+opacity:0;
+}
+}
+
+.sparkle{
+position:fixed;
+font-size:20px;
+pointer-events:none;
+animation:sparkleAnim 1s forwards;
+}
+
+@keyframes sparkleAnim{
+0%{
+transform:scale(0);
+opacity:1;
+}
+
+100%{
+transform:scale(2);
+opacity:0;
+}
+}
+
+
+@keyframes bounce{
+0%{transform:translateY(0)}
+50%{transform:translateY(-25px)}
+100%{transform:translateY(0)}
+}
+
+/* foto */
+
+.photoFrame{
+width:320px;
+margin:20px auto;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 0 50px pink;
+}
+
+.photoFrame img{
+width:100%;
+}
+
+
+.photoFrame.show{
+opacity:1;
+transform:scale(1);
+}
+
+/* cake */
+
+.cake{
+width:240px;
+height:120px;
+margin:10px auto;
+position:relative;
+
+background:linear-gradient(
+to bottom,
+#ff7eb3 0%,
+#ff4da6 40%,
+#ff2f92 70%,
+#d6006c 100%
+);
+
+border-radius:20px;
+
+box-shadow:
+0 15px 30px rgba(0,0,0,0.4),
+inset 0 -10px 20px rgba(0,0,0,0.2),
+inset 0 8px 10px rgba(255,255,255,0.3);
+
+transform:perspective(600px) rotateX(10deg);
+}
+
+/* layer atas cake */
+
+.cake:before{
+content:"";
+position:absolute;
+top:-25px;
+left:50%;
+transform:translateX(-50%);
+
+width:200px;
+height:40px;
+
+background:radial-gradient(
+ellipse at center,
+#ffffff 0%,
+#ffe0ef 60%,
+#ffc2dd 100%
+);
+
+border-radius:50%;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,0.25),
+inset 0 5px 10px rgba(255,255,255,0.6);
+}
+
+/* lilin */
+
+.candle{
+width:12px;
+height:45px;
+background:repeating-linear-gradient(
+45deg,
+#ffffff,
+#ffffff 4px,
+#ff4da6 4px,
+#ff4da6 8px
+);
+position:absolute;
+top:-60px;
+left:50%;
+transform:translateX(-50%);
+border-radius:3px;
+}
+
+/* api lilin */
+
+.flame{
+width:16px;
+height:24px;
+background:radial-gradient(circle,#fff 20%,yellow 40%,orange 70%);
+border-radius:50% 50% 50% 50%;
+position:absolute;
+top:-24px;
+left:-2px;
+box-shadow:0 0 25px yellow,0 0 50px orange;
+animation:flicker .2s infinite alternate;
+}
+
+/* gallery */
+
+.gallery{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:20px;
+}
+
+.gallery{
+position:relative;
+width:80%;
+max-width:520px;
+height:340px;
+margin:40px auto 60px auto;
+
+overflow:hidden;
+
+/* bentuk aesthetic */
+border-radius:40px;
+
+/* glow romantis */
+box-shadow:
+0 20px 50px rgba(255,105,180,0.4),
+0 0 40px rgba(255,105,180,0.3);
+
+background:rgba(255,255,255,0.05);
+padding:8px;
+}
+
+.gallery:before{
+content:"";
+position:absolute;
+top:-15px;
+left:-15px;
+right:-15px;
+bottom:-15px;
+
+border-radius:50px;
+
+background:linear-gradient(
+45deg,
+rgba(255,105,180,0.4),
+rgba(255,0,150,0.2),
+rgba(255,105,180,0.4)
+);
+
+filter:blur(25px);
+z-index:-1;
+}
+
+.gallery img{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+
+/* bentuk aesthetic */
+border-radius:32px;
+
+/* efek lembut */
+filter:brightness(1.05) contrast(1.05);
+
+opacity:0;
+transition:opacity 1.5s ease-in-out, transform 4s ease;
+}
+
+/* surat */
+
+.letter{
+max-width:520px;
+margin:50px auto;
+font-size:20px;
+line-height:1.7;
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:20px;
+}
+
+/* love rain */
+
+.heart{
+position:fixed;
+pointer-events:none;
+animation:fall linear forwards;
+filter:drop-shadow(0 0 10px pink);
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10vh) scale(0.5) rotate(0deg);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) scale(1.2) rotate(360deg);
+opacity:0;
+}
+}
+
+/* confetti */
+
+.confetti{
+position:fixed;
+width:8px;
+height:8px;
+top:-10px;
+}
+
+/* fireworks */
+
+.firework{
+position:fixed;
+font-size:40px;
+animation:explode 1s forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(0)}
+100%{transform:scale(2);opacity:0}
+}
+
+/* upgrade rahasia */
+
+#loveText{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:50;
+opacity:0;
+transition:opacity 2s;
+}
+
+.hidden{
+display:none;
+}
+
+.smoke{
+position:absolute;
+top:-30px;
+left:50%;
+transform:translateX(-50%);
+font-size:22px;
+animation:smokeUp 2s forwards;
+opacity:.8;
+}
+
+@keyframes smokeUp{
+0%{
+transform:translateX(-50%) translateY(0) scale(.8);
+opacity:.9;
+}
+100%{
+transform:translateX(-50%) translateY(-60px) scale(1.5);
+opacity:0;
+}
+}
+
+#endingScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:radial-gradient(circle,#000000,#020024);
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+z-index:100;
+
+opacity:0;
+pointer-events:none;
+
+transition:opacity 2s;
+}
+
+#endingScreen.show{
+opacity:1;
+pointer-events:auto;
+}
+
+#endingScreen h1{
+font-size:80px;
+color:pink;
+text-shadow:0 0 40px hotpink;
+margin:0;
+}
+
+#endingScreen h2{
+font-size:60px;
+margin:10px 0;
+}
+
+#endingScreen p{
+font-size:22px;
+opacity:.8;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" preload="auto">
+<source src="happybirthday.mp3" type="audio/mpeg">
+</audio>
+
+<div id="loader">
+
+<div class="loaderHeart">❤️</div>
+<div class="loaderText" id="loadingText">Preparing Surprise...</div>
+<div class="loaderSub">For Someone Special</div>
+
+</div>
+
+<canvas id="stars"></canvas>
+
+<section id="intro">
+
+<h1>Happy Birthday Yang Ke-19 Tahun Sayang</h1>
+<h2>Santut ❤️</h2>
+<p>HIHIHI</p>
+
+<button class="btn" onclick="startSite()">Mulai Kejutan</button>
+
+</section>
+
+<section id="main" class="hidden">
+
+<h1>Selamat Ulang Tahun Cintaku ❤️</h1>
+
+<div class="gift" onclick="openGift()">🎁</div>
+
+<div id="photoArea" class="hidden">
+
+<div class="cake">
+
+<div class="cakeLayer"></div>
+
+<div class="candle">
+<div class="flame" id="flame"></div>
+</div>
+
+</div>
+
+<button class="btn" onclick="blow()">Tiup Lilin 🎂</button>
+
+<div class="photoFrame">
+<img src="fotoUtama.jpg">
+</div>
+
+</div>
+
+<div class="gallery">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+<img src="foto5.jpg">
+</div>
+
+<div class="letter">
+<p id="typing"></p>
+</div>
+
+</section>
+
+<canvas id="loveText"></canvas>
+
+<div id="endingScreen">
+
+<h1>I LOVE YOU</h1>
+<h2>SANTUT ❤️</h2>
+<p>Terima kasih sudah hadir di hidupku</p>
+
+</div>
+
+<script>
+
+function showEnding(){
+
+document.getElementById("endingScreen").classList.add("show")
+
+fireworks()
+
+}
+
+/* loader */
+
+window.onload=function(){
+
+const loadingText=document.getElementById("loadingText")
+
+setTimeout(()=>{
+loadingText.innerHTML="Creating Romantic Moment..."
+},2000)
+
+setTimeout(()=>{
+loadingText.innerHTML="Almost Ready..."
+},4000)
+
+setTimeout(()=>{
+
+document.getElementById("loader").style.opacity="0"
+
+setTimeout(()=>{
+document.getElementById("loader").style.display="none"
+},1500)
+
+createStars()
+startSlider()
+typingEffect()
+loveRain()
+
+},6000)
+
+}
+
+/* mulai */
+
+function startSite(){
+document.getElementById("intro").style.display="none"
+document.getElementById("main").classList.remove("hidden")
+}
+
+/* buka kado */
+
+function openGift(){
+
+const gift=document.querySelector(".gift")
+
+gift.style.animation="openGiftAnim 1s forwards"
+
+/* efek sparkle */
+
+for(let i=0;i<20;i++){
+
+let s=document.createElement("div")
+
+s.className="sparkle"
+s.innerHTML="✨"
+
+s.style.left=(gift.offsetLeft+Math.random()*120)+"px"
+s.style.top=(gift.offsetTop+Math.random()*120)+"px"
+
+document.body.appendChild(s)
+
+setTimeout(()=>s.remove(),1000)
+
+}
+
+setTimeout(()=>{
+document.getElementById("photoArea").classList.remove("hidden")
+},900)
+
+const music=document.getElementById("music")
+
+music.currentTime=0
+music.volume=0.2
+music.play().catch(()=>{})
+
+let fade=setInterval(()=>{
+
+if(music.volume<1){
+music.volume+=0.05
+}else{
+clearInterval(fade)
+}
+
+},300)
+
+}
+
+/* fireworks text */
+
+function loveTextFireworks(){
+
+const canvas=document.getElementById("loveText")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+canvas.style.opacity="1"
+
+let text="I Love You Santut ❤️"
+
+ctx.fillStyle="white"
+ctx.font="bold 100px Poppins"
+ctx.textAlign="center"
+ctx.fillText(text,canvas.width/2,canvas.height/2)
+
+let imageData=ctx.getImageData(0,0,canvas.width,canvas.height)
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+let particles=[]
+
+for(let y=0;y<canvas.height;y+=7){
+for(let x=0;x<canvas.width;x+=7){
+
+let index=(y*canvas.width+x)*4
+
+if(imageData.data[index+3]>128){
+
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+tx:x,
+ty:y
+})
+
+}
+
+}
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="pink"
+
+particles.forEach(p=>{
+
+p.x+=(p.tx-p.x)*0.05
+p.y+=(p.ty-p.y)*0.05
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.fill()
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+}
+
+/* slider */
+
+function startSlider(){
+
+let slides=document.querySelectorAll(".gallery img")
+let index=0
+
+slides[0].classList.add("active")
+
+setInterval(()=>{
+
+slides[index].classList.remove("active")
+
+index++
+
+if(index>=slides.length){
+index=0
+}
+
+slides[index].classList.add("active")
+
+},3500)
+
+}
+
+/* typing */
+
+function typingEffect(){
+
+let text="Selamat ulang tahun cintaku. Terima kasih sudah hadir di hidupku. Semoga kamu selalu bahagia, sehat, dan semua impianmu tercapai. Aku sayang kamu ❤️"
+
+
+let i=0
+
+function type(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i)
+
+i++
+
+setTimeout(type,40)
+
+}
+
+}
+
+type()
+
+}
+
+/* love rain */
+
+function loveRain(){
+
+setInterval(()=>{
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+
+let hearts=["❤️","💖","💗","💘","💕"]
+
+heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)]
+
+heart.style.left=Math.random()*100+"vw"
+heart.style.fontSize=(20+Math.random()*40)+"px"
+heart.style.animationDuration=(4+Math.random()*4)+"s"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{
+heart.remove()
+},8000)
+
+},150)
+
+}
+
+/* stars */
+
+function createStars(){
+
+const canvas=document.getElementById("stars")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let stars=[]
+
+for(let i=0;i<200;i++){
+
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*2
+})
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="white"
+
+stars.forEach(s=>{
+ctx.beginPath()
+ctx.arc(s.x,s.y,s.size,0,Math.PI*2)
+ctx.fill()
+})
+
+requestAnimationFrame(draw)
+
+}
+
+draw()
+
+}
+
+/* confetti */
+
+function confetti(){
+
+for(let i=0;i<60;i++){
+
+let c=document.createElement("div")
+
+c.className="confetti"
+
+c.style.left=Math.random()*100+"vw"
+c.style.background="hsl("+Math.random()*360+"deg,100%,50%)"
+
+document.body.appendChild(c)
+
+let speed=Math.random()*3+2
+
+let fall=setInterval(()=>{
+
+let top=c.offsetTop
+
+c.style.top=top+speed+"px"
+
+if(top>window.innerHeight){
+clearInterval(fall)
+c.remove()
+}
+
+},20)
+
+}
+
+}
+
+/* fireworks */
+
+function fireworks(){
+
+for(let i=0;i<15;i++){
+
+let f=document.createElement("div")
+f.className="firework"
+f.innerHTML="🎆"
+
+f.style.left=Math.random()*100+"vw"
+f.style.top=Math.random()*60+"vh"
+
+document.body.appendChild(f)
+
+setTimeout(()=>f.remove(),1000)
+
+}
+
+}
+
+/* tiup lilin */
+
+function blow(){
+
+const flame=document.getElementById("flame")
+
+if(flame){
+flame.style.display="none"
+}
+
+/* asap */
+
+for(let i=0;i<5;i++){
+
+let smoke=document.createElement("div")
+smoke.className="smoke"
+smoke.innerHTML="💨"
+
+document.querySelector(".candle").appendChild(smoke)
+
+setTimeout(()=>smoke.remove(),2000)
+
+}
+
+/* confetti */
+
+confetti()
+
+/* fireworks */
+
+fireworks()
+
+/* tampilkan foto */
+
+setTimeout(()=>{
+document.querySelector(".photoFrame").classList.add("show")
+},800)
+
+/* teks love */
+
+setTimeout(()=>{
+loveTextFireworks()
+},3000)
+setTimeout(()=>{
+showEnding()
+},9000)
+}
+
+
+</script>
+
+</body>
+</html>
+
